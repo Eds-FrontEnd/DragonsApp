@@ -1,0 +1,114 @@
+<template>
+    
+@extends('layouts.app')
+
+@section('content')
+<div class="img_dragon">
+<div class="pagina_login">
+    <div class="pagina_">
+        <div class="login">    
+            <div class="login_int">
+                <div class="login_int_head">{{ __('Login') }}</div>
+
+                <div class="login_int_body">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
+                        <div class="login_int_row">
+                            <label for="email" class="">{{ __('E-mail') }}</label>
+
+                            <div class="login_int_row">
+                                <input id="email" type="email" class="" name="email" value="{{ old('email') }}" placeholder="Digite seu e-mail" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <label for="password" class="" placeholder="Digite sua senha">{{ __('Senha') }}</label>
+
+                            <div class="">
+                                <input id="password" type="password" class="" name="password" placeholder="Digite sua senha" required autocomplete="current-password">
+
+                                @error('password')
+                                    <span class="" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <div class="">
+                                <div class="form-check">
+                                    <input class="" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                    <label class="" for="remember">
+                                        {{ __('Manter-me logado') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <div class="">
+                                <button type="submit" class="">
+                                    {{ __('Entrar') }}
+                                </button>
+
+                                @if (Route::has('password.request'))
+                                    <a class="" href="{{ route('password.request') }}">
+                                        {{ __('Esqueci a senha') }}
+                                    </a>
+                                @endif
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+           </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+</template>
+
+<script>
+
+</script>
+
+<style>
+   .img_dragon {
+    background-image: url("img/dragon_parallax.png");
+    height: 80vh;
+    margin: 0 auto;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-attachment: fixed;
+}
+.login{
+    width: 350px;
+    height: 460px;
+    margin: 0 auto;
+    position: absolute;
+    background-color: var(--white);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.pagina_login{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+</style>
